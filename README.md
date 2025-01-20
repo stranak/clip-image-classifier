@@ -3,6 +3,7 @@ Use the nightly build of PyTorch hoping that MPS gets more and more operations i
 
 ```.bash
 python3 -m venv env
+source ./env/bin/activate
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
 pip install transformers ftfy regex tqdm
 pip install git+https://github.com/openai/CLIP.git
