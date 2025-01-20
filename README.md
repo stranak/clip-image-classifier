@@ -8,6 +8,7 @@ pip install transformers ftfy regex tqdm;
 pip install git+https://github.com/openai/CLIP.git
 ```
 
+### Run
 `cat images.filelist| python clip-classify.py`
 
 On the first run the CLIP model used in the script (several options commented there) will be downloaded. It is about 900MB.
