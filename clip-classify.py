@@ -4,8 +4,17 @@ import clip
 from PIL import Image
 import csv
 
+# Automatically select the device based on availability
+if torch.cuda.is_available():
+    device = torch.device("cuda")  # Use CUDA-enabled GPU on systems with NVIDIA GPUs
+elif torch.backends.mps.is_available():
+    device = torch.device("mps")  # Use MPS on macOS with Apple Silicon
+else:
+    device = torch.device("cpu")  # Fallback to CPU if no GPU is available
+
+print(f"Using device: {device}")
+
 # Load the CLIP model and preprocess function
-device = "mps" if torch.backends.mps.is_available() else "cpu"  # Use MPS if available
 # model, preprocess = clip.load("ViT-B/32", device=device) #  86 million parameters
 # model, preprocess = clip.load("ViT-L/14", device=device) # 428 million parameters, >2GB VRAM
 model, preprocess = clip.load("ViT-L/14@336px", device=device) # 336x336px instead of 224x224
